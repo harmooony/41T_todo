@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="add">
+            <input type="text" placeholder="Add a new task" class="add_txt" >
+            <button class="add_btn" onclick="notes_add()">
+                <img src="images/Plus.png">
+            </button>
+        </div>
+
+        <div class="todo_container" id="list">
+            <p class="head_txt" id="todo">Tasks to do - 0</p>
+        </div>
+
+        <div class="todo_container_done">
+            <p class="head_txt" id="done">Done - 0</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

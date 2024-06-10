@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --fonts: 
+}
+
+body {
+    background-color: rgba(13, 7, 20, 1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 583px;
+    background: rgba(29, 24, 37, 1);
+    margin: 0 auto;
+    margin-top: 109px;
+    border-radius: 20px;
+}
+
+
+button {
+    border-radius: 10px;
+}
+
+/*add*/
+
+.add {
+    display: flex;
+    margin-left: 65px;
+    margin-right: 85px;
+    margin-top: 50px;
+}
+
+.add_btn {
+    margin-left: 11px;
+    padding: 4px;
+    background-color: rgba(158, 120, 207, 1);
+    border: none;
+}
+
+.add_txt {
+    border-color: rgba(158, 120, 207, 1);
+    background-color: rgba(29, 24, 37, 1);
+    color: white;
+    outline: none;
+    width: 365px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 11px 0px 10px 15px;
+}
+
+
+
+/*todo*/
+
+.head_txt {
+    margin-bottom: 18px;
+}
+
+.todo_container {
+    margin-left: 65px;
+    margin-right: 85px;
+    margin-top: 59px;
+}
+
+.todo_container_done {
+    margin-left: 65px;
+    margin-right: 85px;
+    margin-top: 59px;
+}
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(21, 16, 28, 1);
+    margin-bottom: 16px;
+    border-radius: 10px;
+}
+
+.todo_wrapper {
+    display: flex;
+    align-items: center;
+    margin: 22px 0px 22px 21px;
+    max-width: 400px;
+    margin-bottom: 16px;;
+}
+
+.todo_wrapper_done {
+    display: flex;
+    align-items: center;
+    margin: 22px 0px 22px 21px;
+    max-width: 400px;
+}
+
+.todo_txt {
+    font-size: 16px;
+    color: rgba(158, 120, 207, 1);
+}
+
+.todo_txt_done {
+    color: rgba(120, 207, 176, 1);
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.todo_btns {
+    margin-left: auto;
+}
+
+.todo_photo {
+    margin: 4px;
+}
+
+.todo_photo:hover {
+    opacity: 0.5;
+}
+
+p {
+    color: white;
+}
