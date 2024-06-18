@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+<body onload="load_all_tasks()">
     <div class="container">
         <div class="add">
             <input type="text" placeholder="Add a new task" class="add_txt" >
@@ -18,10 +18,16 @@
 
         <div class="todo_container" id="list">
             <p class="head_txt" id="todo">Tasks to do - 0</p>
+            <ul>
+
+            </ul>
         </div>
 
         <div class="todo_container_done">
             <p class="head_txt" id="done">Done - 0</p>
+            <ul id="done_ul">
+                
+            </ul>
         </div>
     </div>
 

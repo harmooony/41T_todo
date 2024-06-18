@@ -3,74 +3,99 @@ let done_label = document.getElementById('done');
 let num = 0;
 let num_done = 0;
 
+let itemsList = document.querySelector("ul");
+let DoneItemsList = document.getElementById("done_ul")
+
+let notes_list;
+
 function notes_add() {
     var notetext = document.querySelector(".add_txt").value;
 
-    var todo = document.createElement('div');
-    todo.classList.add('todo');
+    if (notetext === "") {
+        return;
+    }
 
-    var wrapper = document.createElement('div');
-    wrapper.classList.add('todo_wrapper');
+    const li = document.createElement('li');
+        li.innerHTML = `
+                <p class="todo_txt">${notetext}</p>
+                <div class="todo_btns">
+                    <img src="images/Check.png" class="todo_photo" id="complete">
+                    <img src="images/TrashSimple.png" class="todo_photo" id="delete">
+                </div>
+        `;
+    itemsList.appendChild(li);
 
-    var btns_cont = document.createElement('div');
-    btns_cont.classList.add('todo_btns')
+    li.querySelector('#complete').addEventListener('click', () => completeTask(li));
+    li.querySelector('#delete').addEventListener('click', () => deleteTask(li));
 
-    var notetext_cont = document.createElement('p');
-    notetext_cont.classList.add('todo_txt');
-    notetext_cont.textContent = notetext;
+    save_tasks();
+    count_tasks();
+}
 
-    var check = document.createElement('img');
-    check.src = 'images/Check.png';
-    check.classList.add('todo_photo')
+function completeTask(task) {
+    let text = task.querySelector("p").innerText;
+    task.remove();
 
-    var trash = document.createElement('img');
-    trash.src = 'images/TrashSimple.png';
-    trash.classList.add('todo_photo')
+    const li = document.createElement('li');
+        li.innerHTML = `
+            <s class="todo_txt_done">${text}</s>
+        `
+    DoneItemsList.appendChild(li);
+    save_tasks();
+    count_tasks();
+}
 
-    btns_cont.appendChild(check);
-    btns_cont.appendChild(trash);
+function deleteTask(task) {
+    task.remove();
+    save_tasks();
+    count_tasks();
+}
 
-    wrapper.appendChild(notetext_cont);
-    wrapper.appendChild(btns_cont);
+function save_tasks() {
+    const tasks = [];
+    itemsList.querySelectorAll("li").forEach(li => {
+        tasks.push({text: li.querySelector("p").innerText, completed: false})
+    })
+    DoneItemsList.querySelectorAll("li").forEach(li => {
+        tasks.push({text: li.querySelector("s").innerText, completed: true})
+    })
+    localStorage.setItem("tasks_list", JSON.stringify(tasks));
+}
 
-    todo.appendChild(wrapper);
+function load_all_tasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks_list')) || [];
 
-    check.addEventListener('click', function() {
-        var done_cont = document.querySelector('.todo_container_done');
+    tasks.forEach(task => {
+        if (task.completed) {
+            const li = document.createElement('li');
+                li.innerHTML = `
+                    <s class="todo_txt_done">${task.text}</s>
+                `
+            DoneItemsList.appendChild(li);
+        }
 
-        var done_task_cont = document.createElement("div");
-        done_task_cont.classList.add('todo')
+        else {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <p class="todo_txt">${task.text}</p>
+                <div class="todo_btns">
+                    <img src="images/Check.png" class="todo_photo" id="complete">
+                    <img src="images/TrashSimple.png" class="todo_photo" id="delete">
+                </div>
+                `;
+                itemsList.appendChild(li);
+                li.querySelector('#complete').addEventListener('click', () => completeTask(li));
+                li.querySelector('#delete').addEventListener('click', () => deleteTask(li));
+        }
 
-        var done_task = document.createElement("div");
-        done_task.classList.add('todo_wrapper_done');
-
-        var done_task_txt = document.createElement("s");
-        done_task_txt.textContent = notetext;
-        done_task_txt.classList.add('todo_txt_done');
-
-        done_task.appendChild(done_task_txt)
-
-        done_task_cont.appendChild(done_task)
-
-        done_cont.appendChild(done_task_cont);
-
-        todo.remove();
-        num -= 1;
-        num_done += 1;
-        todo_label.innerText = "Tasks to do - " + num;
-        done_label.innerText = "Done - " + num_done;
     })
 
-    var todo_cont = document.querySelector('.todo_container');
-    todo_cont.appendChild(todo);
+    count_tasks();
 
-    trash.addEventListener('click', function() {
-        todo.remove();
-        num -= 1;
-        todo_label.innerText = "Tasks to do - " + num;
-    })
-    num += 1;
-    todo_label.innerText = "Tasks to do - " + num;
-    done_label.innerText = "Done - " + num_done;
-    console.log(num);
+}
+
+
+function count_tasks() {
+    todo_label.innerText = `Tasks to do - ${itemsList.children.length}`
+    done_label.innerText = `Done - ${DoneItemsList.children.length}`
 }
