@@ -4,7 +4,7 @@
 }
 
 :root {
-    --fonts: 
+    --fonts: "Inter", sans-serif;
 }
 
 body {
@@ -24,6 +24,11 @@ body {
 
 button {
     border-radius: 10px;
+}
+
+.btn {
+    border: none;
+    background-color: rgba(21, 16, 28, 1);
 }
 
 ul {
@@ -55,6 +60,7 @@ ul {
     border-radius: 10px;
     font-size: 16px;
     padding: 11px 0px 10px 15px;
+    font-family: var(--fonts);
 }
 
 
@@ -63,6 +69,7 @@ ul {
 
 .head_txt {
     margin-bottom: 18px;
+    font-family: var(--fonts);
 }
 
 .todo_container {
@@ -97,12 +104,14 @@ li {
 .todo_txt {
     font-size: 16px;
     color: rgba(158, 120, 207, 1);
+    font-family: var(--fonts);
 }
 
 .todo_txt_done {
     color: rgba(120, 207, 176, 1);
     margin-top: 8px;
     margin-bottom: 8px;
+    font-family: var(--fonts);
 }
 
 .todo_btns {
@@ -120,4 +129,12 @@ li {
 
 p {
     color: white;
+    font-family: var(--fonts);
+}
+
+s {
+    color: rgba(120, 207, 176, 1);
+    font-family: var(--fonts);
+    margin-top: 7px;
+    margin-bottom: 7px;
 }

@@ -1,36 +1,33 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Список задач</title>
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body onload="load_all_tasks()">
-    <div class="container">
-        <div class="add">
-            <input type="text" placeholder="Add a new task" class="add_txt" >
-            <button class="add_btn" onclick="notes_add()">
-                <img src="images/Plus.png">
-            </button>
-        </div>
 
-        <div class="todo_container" id="list">
-            <p class="head_txt" id="todo">Tasks to do - 0</p>
-            <ul>
-
-            </ul>
-        </div>
-
-        <div class="todo_container_done">
-            <p class="head_txt" id="done">Done - 0</p>
-            <ul id="done_ul">
-                
-            </ul>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+<body>
+    <section class="container">
+        <form class="add">
+            <input type="text" id="item" placeholder="Add a new task" class="add_txt"/>
+            <button type="submit" id="add" class="add_btn"><img src="images/Plus.png" alt="Добавить" width="24" height="24"></button>
+        </form>
+        <article class="todo_container">
+            <p class="head_txt">Tasks to do - <span id="countTodo">0</span></p>
+            <ul id="items"></ul>
+        </article>
+        <article class="todo_container_done">
+            <p class="head_txt">Done - <span id="countDone">0</span></p>
+            <ul id="completed"></ul>
+        </article>
+    </section>
+    <script src="class.js"></script>
 </body>
+
 </html>
